@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { Flex, Box, Spacer } from "@chakra-ui/react";
+
+import FunctionSelector from "../src/components/FunctionSelector";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Flex
+      flexDirection="column"
+      backgroundColor="blue.100"
+      height="100vh"
+      width="100%"
+    >
+      {/* <Flex width="100%" height="20vh">
+        <Spacer></Spacer>
+      </Flex>
+      <Flex width="100%" flexDirection="column" justifyContent={"center"}>
+        <Box
+          backgroundColor="white"
+          mx="auto"
+          borderRadius="4"
+          boxShadow={"md"}
+          padding={4}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <FunctionSelector />
+        </Box>
+      </Flex> */}
+      <Box></Box>
+    </Flex>
   );
 }
 
