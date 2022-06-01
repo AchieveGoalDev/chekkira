@@ -1,5 +1,5 @@
 // import { csvToObj } from "csv-to-js-parser";
-// const fs = require("fs");
+// const fs = window.require("fs");
 
 // const csvTest = () => {
 //   const fileArray = [

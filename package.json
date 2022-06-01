@@ -1,4 +1,6 @@
 {
+  "author": "Brosef Jones",
+  "description": "An app for finding the words",
   "name": "chekkira",
   "version": "0.1.0",
   "private": true,
@@ -14,6 +16,7 @@
     "concurrently": "^7.2.0",
     "cross-env": "^7.0.3",
     "csv-to-js-parser": "^2.3.4",
+    "electron-squirrel-startup": "^1.0.0",
     "framer-motion": "^6.3.3",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
@@ -23,10 +26,12 @@
   },
   "scripts": {
     "chekkira": "concurrently \"npm start\" \"wait-on http://localhost:3000/ && electron .\"",
-    "start": "react-scripts start",
+    "start": "electron-forge start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
   "eslintConfig": {
     "extends": [
@@ -47,6 +52,38 @@
     ]
   },
   "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.63",
+    "@electron-forge/maker-deb": "^6.0.0-beta.63",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.63",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.63",
+    "@electron-forge/maker-zip": "^6.0.0-beta.63",
     "electron": "^18.2.3"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "chekkira"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
   }
 }
