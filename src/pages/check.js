@@ -42,7 +42,7 @@ export default function Check({ returnData, returnStatus }) {
 export async function getServerSideProps() {
   const fs = require("fs");
   const path = require("path");
-  const csv = require("csvtojson");
+  //   const csv = require("csvtojson");
 
   let returnStatus = {
     initstatus: "initialized",
@@ -75,7 +75,7 @@ export async function getServerSideProps() {
   //     return jsonObj;
   //   };
 
-  let returnData = await getJsonData(dataPath, dataFiles);
+  //   let returnData = await getJsonData(dataPath, dataFiles);
 
   if (!returnData) {
     returnStatus = { status: "serverside error" };
