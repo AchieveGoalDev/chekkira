@@ -49,9 +49,17 @@ export async function getServerSideProps() {
     pathstatus: "uninitialized",
     datapath: "uninitialized",
     datafiles: "uninitialized",
+    localpath: "uninitialized",
   };
 
   const dataPath = path.join(process.cwd(), "public", "data", "ek");
+  const localPath = fs.readdirSync(process.cwd(), (err, files) => {
+    if (err) {
+      return err;
+    } else {
+      return files;
+    }
+  });
   //   const dataFiles = fs.readdirSync(dataPath, (err, files) => {
   //     if (err) {
   //       return err;
@@ -61,6 +69,7 @@ export async function getServerSideProps() {
   //   });
 
   returnStatus.datapath = dataPath;
+  returnStatus.localpath = localPath;
   //   returnStatus.datafiles = dataFiles;
   returnStatus.pathstatus = "ok";
   //   if (!dataPath) {
