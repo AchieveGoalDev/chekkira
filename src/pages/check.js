@@ -64,16 +64,16 @@ export async function getServerSideProps() {
     returnStatus.pathstatus = dataPath;
   }
 
-  const getJsonData = async (dataPath, dataFiles) => {
-    let jsonObj = {};
-    for (let i = 0; i < dataFiles.length; i++) {
-      const objName = dataFiles[i].replace(".csv", "");
-      jsonObj[objName] = await csv().fromFile(
-        path.join(dataPath, dataFiles[i])
-      );
-    }
-    return jsonObj;
-  };
+  //   const getJsonData = async (dataPath, dataFiles) => {
+  //     let jsonObj = {};
+  //     for (let i = 0; i < dataFiles.length; i++) {
+  //       const objName = dataFiles[i].replace(".csv", "");
+  //       jsonObj[objName] = await csv().fromFile(
+  //         path.join(dataPath, dataFiles[i])
+  //       );
+  //     }
+  //     return jsonObj;
+  //   };
 
   let returnData = await getJsonData(dataPath, dataFiles);
 
