@@ -62,16 +62,17 @@ export async function getServerSideProps() {
   });
 
   const parsedPaths = path.parse(process.cwd());
-  //   const upperPaths = fs.readdirSync(
-  //     path.join("..", process.cwd()),
-  //     (err, files) => {
-  //       if (err) {
-  //         return err;
-  //       } else {
-  //         return files;
-  //       }
-  //     }
-  //   );
+
+  const upperPaths = fs.readdirSync(
+    path.join(process.cwd(), "../"),
+    (err, files) => {
+      if (err) {
+        return err;
+      } else {
+        return files;
+      }
+    }
+  );
 
   const lowerPaths = fs.readdirSync(
     path.join(process.cwd(), "chunks"),
@@ -94,7 +95,7 @@ export async function getServerSideProps() {
 
   returnStatus.datapath = dataPath;
   returnStatus.localpath = localPath;
-  //   returnStatus.upperpaths = upperPaths;
+  returnStatus.upperpaths = upperPaths;
   returnStatus.pagespaths = lowerPaths;
   returnStatus.parsedpaths = parsedPaths;
   //   returnStatus.datafiles = dataFiles;
