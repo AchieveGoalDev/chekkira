@@ -74,7 +74,7 @@ export async function getServerSideProps() {
   //   );
 
   const lowerPaths = fs.readdirSync(
-    path.join(process.cwd(), "pages"),
+    path.join(process.cwd(), "chunks"),
     (err, files) => {
       if (err) {
         return err;
