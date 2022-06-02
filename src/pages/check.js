@@ -49,7 +49,7 @@ export async function getServerSideProps() {
     pathstatus: "uninitialized",
   };
 
-  //   const dataPath = path.join(process.cwd(), "public", "data", "ek");
+  const dataPath = path.join(process.cwd(), "public", "data", "ek");
   //   const dataFiles = fs.readdirSync(dataPath, (err, files) => {
   //     if (err) {
   //       return err;
