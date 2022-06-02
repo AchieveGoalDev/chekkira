@@ -29,14 +29,10 @@ const WordInput = ({ words }) => {
         wordObj = list;
       }
     });
-    console.log(isIn);
     return { isIn: isIn, wordObj: wordObj };
   };
 
   useEffect(() => {
-    console.log("Checking...");
-    console.log(selectedLevel);
-    console.log(checkWord);
     const checkObj = isInDatabase(checkWord, words, selectedLevel);
     setIsIn(checkObj.isIn);
     setWordObj(checkObj.wordObj);
