@@ -23,10 +23,10 @@ const WordInput = ({ words }) => {
 
   const isInDatabase = (checkWord, words, selectedLevel) => {
     const isIn = false;
-    words[selectedLevel].forEach((word) => {
-      if (word.word.toLowerCase() == checkWord.toLowerCase()) {
+    words[selectedLevel].forEach((list) => {
+      if (list.word.toString().toLowerCase() == checkWord.toLowerCase()) {
         isIn = true;
-        wordObj = word;
+        wordObj = list;
       }
     });
     console.log(isIn);
