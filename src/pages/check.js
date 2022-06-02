@@ -49,20 +49,20 @@ export async function getServerSideProps() {
     pathstatus: "uninitialized",
   };
 
-  const dataPath = path.join(process.cwd(), "public", "data", "ek");
-  const dataFiles = fs.readdirSync(dataPath, (err, files) => {
-    if (err) {
-      return err;
-    } else {
-      return files;
-    }
-  });
+  //   const dataPath = path.join(process.cwd(), "public", "data", "ek");
+  //   const dataFiles = fs.readdirSync(dataPath, (err, files) => {
+  //     if (err) {
+  //       return err;
+  //     } else {
+  //       return files;
+  //     }
+  //   });
 
-  if (!dataPath) {
-    returnStatus.pathstatus = "error";
-  } else {
-    returnStatus.pathstatus = dataPath;
-  }
+  //   if (!dataPath) {
+  //     returnStatus.pathstatus = "error";
+  //   } else {
+  //     returnStatus.pathstatus = dataPath;
+  //   }
 
   //   const getJsonData = async (dataPath, dataFiles) => {
   //     let jsonObj = {};
@@ -77,9 +77,9 @@ export async function getServerSideProps() {
 
   //   let returnData = await getJsonData(dataPath, dataFiles);
 
-  if (!returnData) {
-    returnStatus = { status: "serverside error" };
-  }
+  //   if (!returnData) {
+  //     returnStatus = { status: "serverside error" };
+  //   }
 
   return {
     props: {
