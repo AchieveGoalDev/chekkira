@@ -73,16 +73,16 @@ export async function getServerSideProps() {
   //     }
   //   );
 
-  //   const lowerPaths = fs.readdirSync(
-  //     path.join(process.cwd(), "pages"),
-  //     (err, files) => {
-  //       if (err) {
-  //         return err;
-  //       } else {
-  //         return files;
-  //       }
-  //     }
-  //   );
+  const lowerPaths = fs.readdirSync(
+    path.join(process.cwd(), "pages"),
+    (err, files) => {
+      if (err) {
+        return err;
+      } else {
+        return files;
+      }
+    }
+  );
 
   //   const dataFiles = fs.readdirSync(dataPath, (err, files) => {
   //     if (err) {
@@ -95,7 +95,7 @@ export async function getServerSideProps() {
   returnStatus.datapath = dataPath;
   returnStatus.localpath = localPath;
   //   returnStatus.upperpaths = upperPaths;
-  //   returnStatus.pagespaths = lowerPaths;
+  returnStatus.pagespaths = lowerPaths;
   returnStatus.parsedpaths = parsedPaths;
   //   returnStatus.datafiles = dataFiles;
   returnStatus.pathstatus = "ok";
