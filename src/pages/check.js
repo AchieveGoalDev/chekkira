@@ -4,14 +4,14 @@ import { Flex, Spacer, Box, Heading } from "@chakra-ui/react";
 
 import FunctionSelector from "../components/FunctionSelector";
 
-export default function Check({ returnData }) {
+export default function Check({ returnData, returnStatus }) {
   return (
     <>
       <Head>
         <title>Chekkira</title>
       </Head>
-      {returnData.status ? (
-        <Heading>{returnData.status}</Heading>
+      {returnStatus ? (
+        <pre>{JSON.stringify(returnStatus, null, 2)}</pre>
       ) : (
         <Flex
           flexDirection="column"
@@ -44,7 +44,10 @@ export async function getServerSideProps() {
   const path = require("path");
   const csv = require("csvtojson");
 
-  let searchedPaths = [];
+  let returnStatus = {
+    initstatus: "initialized",
+    pathstatus: "uninitialized",
+  };
 
   const dataPath = path.join(process.cwd(), "public", "data", "ek");
   const dataFiles = fs.readdirSync(dataPath, (err, files) => {
@@ -54,6 +57,12 @@ export async function getServerSideProps() {
       return files;
     }
   });
+
+  if (!dataPath) {
+    returnStatus.pathstatus = "error";
+  } else {
+    returnStatus.pathstatus = dataPath;
+  }
 
   const getJsonData = async (dataPath, dataFiles) => {
     let jsonObj = {};
@@ -69,12 +78,12 @@ export async function getServerSideProps() {
   let returnData = await getJsonData(dataPath, dataFiles);
 
   if (!returnData) {
-    returnData = { status: "serverside error" };
+    returnStatus = { status: "serverside error" };
   }
 
   return {
     props: {
-      returnData,
+      returnStatus,
     },
   };
 }
