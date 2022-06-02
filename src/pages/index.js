@@ -1,72 +1,15 @@
 import Head from "next/head";
 
-import { Flex, Spacer, Box } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 
-import FunctionSelector from "../components/FunctionSelector";
+import { Flex, Spacer, Box, Button } from "@chakra-ui/react";
 
 export default function Home({ returnData }) {
+  const router = useRouter();
+
   return (
     <>
-      <Head>
-        <title>Chekkira</title>
-      </Head>
-      <Flex
-        flexDirection="column"
-        backgroundColor="blue.100"
-        height="100vh"
-        width="100%"
-      >
-        <Flex width="100%" height="20vh">
-          <Spacer></Spacer>
-        </Flex>
-        <Flex width="100%" flexDirection="column" justifyContent={"center"}>
-          <Box
-            backgroundColor="white"
-            mx="auto"
-            borderRadius="4"
-            boxShadow={"md"}
-            padding={4}
-          >
-            <FunctionSelector words={returnData} />
-          </Box>
-        </Flex>
-      </Flex>
+      <Button onClick={() => router.push("/check")}>To Site</Button>
     </>
   );
-}
-
-export async function getServerSideProps() {
-  const fs = require("fs");
-  const path = require("path");
-  const csv = require("csvtojson");
-
-  let searchedPaths = [];
-
-  const dataPath = path.join(process.cwd(), "public", "data", "ek");
-  const dataFiles = fs.readdirSync(dataPath, (err, files) => {
-    if (err) {
-      return err;
-    } else {
-      return files;
-    }
-  });
-
-  const getJsonData = async (dataPath, dataFiles) => {
-    let jsonObj = {};
-    for (let i = 0; i < dataFiles.length; i++) {
-      const objName = dataFiles[i].replace(".csv", "");
-      jsonObj[objName] = await csv().fromFile(
-        path.join(dataPath, dataFiles[i])
-      );
-    }
-    return jsonObj;
-  };
-
-  let returnData = await getJsonData(dataPath, dataFiles);
-
-  return {
-    props: {
-      returnData,
-    },
-  };
 }
