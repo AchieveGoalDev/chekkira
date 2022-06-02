@@ -52,16 +52,16 @@ export async function getServerSideProps() {
   };
 
   const dataPath = path.join(process.cwd(), "public", "data", "ek");
-  const dataFiles = fs.readdirSync(dataPath, (err, files) => {
-    if (err) {
-      return err;
-    } else {
-      return files;
-    }
-  });
+  //   const dataFiles = fs.readdirSync(dataPath, (err, files) => {
+  //     if (err) {
+  //       return err;
+  //     } else {
+  //       return files;
+  //     }
+  //   });
 
   returnStatus.datapath = dataPath;
-  returnStatus.datafiles = dataFiles;
+  //   returnStatus.datafiles = dataFiles;
   returnStatus.pathstatus = "ok";
   //   if (!dataPath) {
   //     returnStatus.pathstatus = "error";
