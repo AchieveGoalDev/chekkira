@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 
-import _ from "lodash";
-
 import {
   Input,
   Radio,
@@ -13,7 +11,10 @@ import {
   Text,
   Box,
 } from "@chakra-ui/react";
+
 import { CheckCircleIcon } from "@chakra-ui/icons";
+
+import TestRangeSlider from "./TestRangeSlider";
 
 const WordInput = ({ words }) => {
   const [checkWord, setCheckWord] = useState("");
@@ -43,7 +44,7 @@ const WordInput = ({ words }) => {
       <Heading>Check word here:</Heading>
       <Divider my={3} />
       <Flex>
-        <RadioGroup onChange={setSelectedLevel} value={selectedLevel}>
+        {/* <RadioGroup onChange={setSelectedLevel} value={selectedLevel}>
           <Flex display="block" mb={3}>
             <Flex
               backgroundColor="orange.50"
@@ -112,7 +113,9 @@ const WordInput = ({ words }) => {
               英検準1級
             </Radio>
           </Flex>
-        </RadioGroup>
+        </RadioGroup> */}
+        <TestRangeSlider />
+        <Box my={4} p={5}></Box>
       </Flex>
       <Flex alignItems={"center"}>
         <Input
