@@ -6,6 +6,7 @@ import {
   RangeSliderTrack,
   RangeSliderMark,
   RangeSliderThumb,
+  Box,
 } from "@chakra-ui/react";
 
 const TestRangeSlider = () => {
@@ -28,28 +29,38 @@ const TestRangeSlider = () => {
 
   return (
     <RangeSlider
-      h={"85px"}
+      h={"100px"}
       min={0}
       max={5}
       defaultValue={[0, 4]}
       step={1}
       w={"500px"}
-      onChangeEnd={(e) => handleRangeChange(e)}
+      onChange={(e) => handleRangeChange(e)}
     >
       <RangeSliderMark value={0} fontSize={"sm"} fontWeight={"bold"}>
-        5級
+        <Box bgColor={"orange.100"} p={"5px"} borderRadius={"md"}>
+          5級
+        </Box>
       </RangeSliderMark>
       <RangeSliderMark value={1} fontSize={"sm"} fontWeight={"bold"}>
-        4級
+        <Box bgColor={"pink.100"} p={"5px"} borderRadius={"md"}>
+          4級
+        </Box>
       </RangeSliderMark>
       <RangeSliderMark value={2} fontSize={"sm"} fontWeight={"bold"}>
-        3級
+        <Box bgColor={"blue.100"} p={"5px"} borderRadius={"md"}>
+          3級
+        </Box>
       </RangeSliderMark>
       <RangeSliderMark value={3} fontSize={"sm"} fontWeight={"bold"}>
-        準2級
+        <Box bgColor={"green.100"} p={"5px"} borderRadius={"md"}>
+          準2級
+        </Box>
       </RangeSliderMark>
       <RangeSliderMark value={4} fontSize={"sm"} fontWeight={"bold"}>
-        2級
+        <Box bgColor={"purple.100"} p={"5px"} borderRadius={"md"}>
+          2級
+        </Box>
       </RangeSliderMark>
       <RangeSliderMark
         value={5}
@@ -57,7 +68,9 @@ const TestRangeSlider = () => {
         fontWeight={"bold"}
         whiteSpace={"nowrap"}
       >
-        準1級
+        <Box bgColor={"gray.100"} p={"5px"} borderRadius={"md"}>
+          準1級
+        </Box>
       </RangeSliderMark>
       <RangeSliderTrack h={3}>
         <RangeSliderFilledTrack
